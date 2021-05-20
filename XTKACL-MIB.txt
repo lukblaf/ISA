@@ -1,0 +1,56 @@
+-- author: Lukas Tkac(xtkacl00)
+-- email: xtkacl00.stud.fit.vutbr.cz
+XTKACL-MIB DEFINITIONS ::= BEGIN
+IMPORTS
+     OBJECT-TYPE, Integer32,
+     MODULE-IDENTITY, experimental               FROM SNMPv2-SMI
+     DisplayString                               FROM SNMPv2-TC;
+xtkaclMIB MODULE-IDENTITY
+     LAST-UPDATED "202011140000Z" -- 14 Nov 2020, midnight
+     ORGANIZATION "vut-brno"
+     CONTACT-INFO " created by: Lukas Tkac
+                    email: xtkacl00@stud.fit.vutbr.cz
+                  "
+     DESCRIPTION "A simple mib for demonstrate purposes in Network Applications and Network Administration univeristy subject."
+     REVISION    "202011140000Z"
+     DESCRIPTION " The latest version of this MIB module."
+         ::= { experimental 22 }
+
+-- Definition of objects in this module
+myLogin OBJECT-TYPE
+     SYNTAX DisplayString
+     MAX-ACCESS read-only
+     STATUS current
+     DESCRIPTION
+     "This is an object which display login name of author."
+     DEFVAL { "xstudent00" }
+         ::= { xtkaclMIB 1 }
+
+myCurrentTime OBJECT-TYPE
+    SYNTAX DisplayString
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+    "This is an object which return the current time formatted according to RFC 3339."
+    DEFVAL { "2020-11-15T20:00:01Z" }
+        ::= { xtkaclMIB 2 }
+
+myNumGetSet OBJECT-TYPE
+    SYNTAX Integer32
+    MAX-ACCESS read-write
+    STATUS current
+    DESCRIPTION
+    " This is an object which receives/gives the number in Integer32 data type. "
+    DEFVAL { 0 }
+        ::= { xtkaclMIB 3 }
+
+myRAM OBJECT-TYPE
+    SYNTAX DisplayString
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+    " This is an object which gives number value of system RAM. (Random Access Memory) "
+    DEFVAL { 0 }
+        ::= { xtkaclMIB 4 }
+
+END
